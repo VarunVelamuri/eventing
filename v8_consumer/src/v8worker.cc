@@ -545,13 +545,13 @@ void V8Worker::RouteMessage() {
       switch (getTimerOpcode(msg.header->opcode)) {
       case oTimer:
         vb_no = msg.header->partition;
-        if (timer_filters_[vb_no].Get() == false) {
+        //if (timer_filters_[vb_no].Get() == false) {
           payload = flatbuf::payload::GetPayload(
               (const void *)msg.payload->payload.c_str());
           TimerEvent event(payload);
           timer_msg_counter++;
           this->SendTimer(event);
-        }
+        //}
         break;
       default:
         break;
